@@ -8,7 +8,7 @@
 #include<string.h>
 #include<stdlib.h>
 
-void check(int *num,int *count)
+void check(int *num,int *count,int *z_count)
 {
     char ones[10][7]={"","One","Two","Three","Four","Five","Six","Seven","Eight","Nine"};
     char tens[10][8]={"","Ten","Twenty","Thirty","Forty","Fifty","Sixty","Seventy","Eighty","Ninety"};
@@ -18,7 +18,7 @@ void check(int *num,int *count)
     }
     else if(*count==9)
     {
-        if(num!=0)
+        if(num!=0 && *z_count==0)
             printf("%s Hundred ",ones[*num]);
     }
     else if(*count==8)
@@ -32,7 +32,7 @@ void check(int *num,int *count)
     }
     else if(*count==6)
     {
-        if(num!=0)
+        if(num!=0 && *z_count==0)
             printf("%s Hundred ",ones[*num]);
     }
     else if(*count==5)
@@ -46,7 +46,7 @@ void check(int *num,int *count)
     }
     else if(*count==3)
     {
-        if(num!=0)
+        if(num!=0 && *z_count==0)
             printf("%s Hundred ",ones[*num]);
     }
     else if(*count==2)
@@ -61,12 +61,12 @@ void check(int *num,int *count)
 
 int main()
 {
-    int num,count=0,rev=0;
+    int num,count=0,rev=0,z_count=0;
     printf("Input a number: ");
     scanf("%d",&num);
     int test=num;
     while(test>0)
-    {
+    { 
         rev=rev*10+test%10;
         count++;
         test/=10;
@@ -75,7 +75,11 @@ int main()
     while(testc>0 && rev>=0)
     {
         int testn=rev%10;
-        check(&testn,&testc);
+        if(testn==0)
+            z_count++;
+        else
+            z_count=0;
+        check(&testn,&testc,&z_count);
         --testc;
         rev/=10;
     }
