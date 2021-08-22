@@ -37,7 +37,7 @@ void check(int *num,int *count,int *z_count)
     }
     else if(*count==4)
     {
-        if(num!=0 && *z_count<2)
+        if(num!=0 && *z_count<3)
             printf("%s Thousand ",ones[*num]);
     }
     else if(*count==3)
