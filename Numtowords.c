@@ -68,16 +68,21 @@ int main()
         test/=10;
     }
     int testc=count;
-    while(testc>0 && rev>=0)
+    if(count>9)
+        printf("\nThe number you have entered is too large");
+    else if(count<10)
     {
-        int testn=rev%10;
-        if(testn==0)
-            z_count++;
-        else
-            z_count=0;
-        check(&testn,&testc,&z_count);
-        --testc;
-        rev/=10;
+        while(testc>0 && rev>=0)
+        {
+            int testn=rev%10;
+            if(testn==0)
+                z_count++;
+            else
+                z_count=0;
+            check(&testn,&testc,&z_count);
+            --testc;
+            rev/=10;
+        }
     }
     printf("\n");
     return 0;
