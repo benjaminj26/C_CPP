@@ -51,7 +51,7 @@ void check(int *num,int *count,int *z_count)
     }
     else if(*count==1)
     {
-        printf("%s",ones[*num]);
+        printf("%s ",ones[*num]);
     }
 }
 
