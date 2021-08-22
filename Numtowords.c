@@ -12,11 +12,7 @@ void check(int *num,int *count,int *z_count)
 {
     char ones[10][7]={"","One","Two","Three","Four","Five","Six","Seven","Eight","Nine"};
     char tens[10][8]={"","Ten","Twenty","Thirty","Forty","Fifty","Sixty","Seventy","Eighty","Ninety"};
-    if(*count==10)
-    {
-        printf("%s Billion ",ones[*num]);
-    }
-    else if(*count==9)
+    if(*count==9)
     {
         if(num!=0 && *z_count==0)
             printf("%s Hundred ",ones[*num]);
@@ -27,7 +23,7 @@ void check(int *num,int *count,int *z_count)
     }
     else if(*count==7)
     {
-        if(num!=0)
+        if(num!=0 && *z_count<3)
             printf("%s Million ",ones[*num]);
     }
     else if(*count==6)
@@ -41,7 +37,7 @@ void check(int *num,int *count,int *z_count)
     }
     else if(*count==4)
     {
-        if(num!=0)
+        if(num!=0 && *z_count<2)
             printf("%s Thousand ",ones[*num]);
     }
     else if(*count==3)
