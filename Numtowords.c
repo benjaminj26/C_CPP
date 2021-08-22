@@ -10,8 +10,8 @@
 
 void check(int *num,int *count,int *z_count)
 {
-    char ones[10][7]={"","One","Two","Three","Four","Five","Six","Seven","Eight","Nine"};
-    char tens[10][8]={"","Ten","Twenty","Thirty","Forty","Fifty","Sixty","Seventy","Eighty","Ninety"};
+    char ones[10][7]={"\b","One","Two","Three","Four","Five","Six","Seven","Eight","Nine"};
+    char tens[10][8]={"\b","Ten","Twenty","Thirty","Forty","Fifty","Sixty","Seventy","Eighty","Ninety"};
     if(*count==9)
     {
         if(num!=0 && *z_count==0)
@@ -51,7 +51,7 @@ void check(int *num,int *count,int *z_count)
     }
     else if(*count==1)
     {
-        printf("%s\n",ones[*num]);
+        printf("%s",ones[*num]);
     }
 }
 
