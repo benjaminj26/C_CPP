@@ -72,6 +72,7 @@ int main()
         printf("\nThe number you have entered is too large");
     else if(count<10)
     {
+        printf("\nThe number you have entered in words is:\n");
         while(testc>0 && rev>=0)
         {
             int testn=rev%10;
