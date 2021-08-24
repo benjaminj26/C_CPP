@@ -60,49 +60,54 @@ int main()
     int num,test,count=0,rev=0,z_count=0;
     printf("Input a number: ");
     scanf("%d",&num);
-    if(num >= 0)
-        test=num;
-    else if(num < 0)
-        test=num * -1;
-    while(test>0)
-    { 
-        rev=rev*10+test%10;
-        count++;
-        test/=10;
-    }
-    int testc=count;
-    if(count>9)
-        printf("\nThe number you have entered is too large");
-    else if(count<10)
-    {
+    if(num == 0)
+        printf("Zero");
+    else
+    {        
         if(num >= 0)
-        {
-            printf("\nThe number you have entered in words is:\n");
-            while(testc>0 && rev>=0)
-            {
-                int testn=rev%10;
-                if(testn==0)
-                    z_count++;
-                else
-                    z_count=0;
-                check(&testn,&testc,&z_count);
-                --testc;
-                rev/=10;
-            }
-        }
+            test=num;
         else if(num < 0)
+            test=num * -1;
+        while(test>0)
+        { 
+            rev=rev*10+test%10;
+            count++;
+            test/=10;
+        }
+        int testc=count;
+        if(count>9)
+            printf("\nThe number you have entered is too large");
+        else if(count<10)
         {
-            printf("\nThe number you have entered in words is:\nMinus ");
-            while(testc>0 && rev>=0)
+            if(num >= 0)
             {
-                int testn=rev%10;
-                if(testn==0)
-                    z_count++;
-                else
-                    z_count=0;
-                check(&testn,&testc,&z_count);
-                --testc;
-                rev/=10;
+                printf("\nThe number you have entered in words is:\n");
+                while(testc>0 && rev>=0)
+                {
+                    int testn=rev%10;
+                    if(testn==0)
+                        z_count++;
+                    else
+                        z_count=0;
+                    check(&testn,&testc,&z_count);
+                    --testc;
+                    rev/=10;
+                }
+            }
+            else if(num < 0)
+            {
+                printf("\nThe number you have entered in words is:\nMinus ");
+                while(testc>0 && rev>=0)
+                {
+                    int testn=rev%10;
+                    if(testn==0)
+                        z_count++;
+                    else
+                        z_count=0;
+                    check(&testn,&testc,&z_count);
+                    --testc;
+                    rev/=10;
+                }
             }
         }
     }
