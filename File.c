@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
         struct College c;
         strcpy(c.name,"Bryce Loski");
         c.rno=19;
-        strcpy(c.branch,"Business Administration");
+        strcpy(c.branch,"Business & Administration");
         c.yob=1987;
         ptr=fopen("Trial.bin","wb");
         fwrite(&c,sizeof(c),1,ptr);
