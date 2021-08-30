@@ -20,17 +20,17 @@ int main(int argc, char *argv[])
     FILE *ptr;
     if(strcmp(argv[1],"write")==0)
     {
-        ptr=fopen("Life skills.txt","w");
-        char str1[]="Welcome to Kerala\n";
-        char str2[]="Hello How are You\n";
+        ptr=fopen("Trial.txt","w");
+        char str1[]="Welcome to Ooty\n";
+        char str2[]="Nice to meet you\n";
         fprintf(ptr,"%s%s",str1,str2);
         fclose(ptr);
     }
     else if(strcmp(argv[1],"append")==0)
     {
-        ptr=fopen("Life skills.txt","a");
-        char str1[]="Welcome to Kerala\n";
-        char str2[]="Hello How are You\n";
+        ptr=fopen("Trial.txt","a");
+        char str1[]="Welcome to Ooty\n";
+        char str2[]="Nice to meet you\n";
         fprintf(ptr,"%s%s",str1,str2);
         fclose(ptr);
     }
@@ -47,10 +47,10 @@ int main(int argc, char *argv[])
     else if(strcmp(argv[1],"write-struct")==0)
     {
         struct College c;
-        strcpy(c.name,"Benjamin Joseph");
-        c.rno=26;
-        strcpy(c.branch,"Computer Science And Engineering");
-        c.yob=2002;
+        strcpy(c.name,"Bryce Loski");
+        c.rno=19;
+        strcpy(c.branch,"Business Administration");
+        c.yob=1987;
         ptr=fopen("Trial.bin","wb");
         fwrite(&c,sizeof(c),1,ptr);
         fclose(ptr);
@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
     else if(strcmp(argv[1],"read-struct")==0)
     {
         struct College d;
-        ptr=fopen("Test.bin","rb");
+        ptr=fopen("Trial.bin","rb");
         fread(&d,sizeof(d),1,ptr);
         printf("Name: %s\n",d.name);
         printf("Roll Number: %d\n",d.rno);
