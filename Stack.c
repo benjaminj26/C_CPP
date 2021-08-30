@@ -32,7 +32,6 @@ int push(int array[10], int top)
         int n;scanf("%d",&n);
         array[top]=n;
         top++;
-        //*k++;
         printf("\n\n\n");
         display(array,top);
     }
@@ -47,7 +46,6 @@ int pop(int array[10], int top)
         printf("%d is deleted",array[top-1]);
         array[top]='\0';
         top--;
-         //*k--;
         printf("\n\n\n");
         display(array,top);
     }
