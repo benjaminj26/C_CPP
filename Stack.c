@@ -24,7 +24,6 @@ void display(int array[10],int top)
 }
 int push(int array[10], int top)
 {
-    //int top= *k;
     if(top==9)
         printf("\nStack Overflow!!\n");
     else
@@ -41,7 +40,6 @@ int push(int array[10], int top)
 }
 int pop(int array[10], int top)
 {
-    //int top= *k;
     if(top==0)
         printf("\nStack Underflow!!\n");
     else
@@ -62,33 +60,18 @@ int main()
     do
     {
         printf("Input your choice: ");
-        // printf("\n1.Push\n2.Pop\n3.Show the stack\n4.Exit\nEnter your choice: ");
-        // scanf("%d",&opt);
-        // switch(opt)
-        // {
-        //     case 1 : top=push(arr,top);
-        //     break;
-        //     case 2 : top=pop(arr,top);
-        //     break;
-        //     case 3 : display(arr,top);
-        //     break;
-        //     case 4 : exit(0);
-        // }
         scanf("%s",ar);
         if(strcmp(ar,"push")==0)
         {    
             top=push(arr,top);
-            // break;
         }
         else if(strcmp(ar,"pop")==0)
         {    
             top=pop(arr,top);
-            // break;
         }
         else if(strcmp(ar,"display")==0)
         {    
             display(arr,top);
-            // break;
         }
         else if(strcmp(ar,"exit")==0)
             exit(0);
