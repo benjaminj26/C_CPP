@@ -8,6 +8,7 @@
 #include<cstring>
 #include<fstream>
 #include<unistd.h>
+#include<cstdlib>
 
 using namespace std;
 
@@ -31,7 +32,7 @@ class College
             strcpy(passwd,pass);
             cout<<"\nAccount created successfully\n";
         }
-        void sign_in()
+        int sign_in()
         {
             char un[20],pw[20];
             cout<<"\nInput your username: ";
@@ -39,35 +40,43 @@ class College
             char *pass=getpass("Password: ");
             strcpy(pw,pass);
             if(strcmp(usrname,un)==0 && strcmp(passwd,pw)==0)
-                cout<<"\nSIGN IN SUCCESSFUL"<<endl;
+            {
+                return 1;
+            }
             else
-                cout<<"\nThe username and password do not match!!\n";
+            {
+                return 0;
+            }
         }
         void display()
         {
-            cout<<"\nRoll Number: "<<rno;
-            cout<<"\nBranch: "<<branch;
+            cout<<"\nRoll Number: "<<rno<<endl;
+            cout<<"\nBranch: "<<branch<<endl;
         }
 };
 
 int main(int argc, char *argv[])
 {
     College c,d;
-    if(strcmp(argv[1],"write")==0)
+    if(strcmp(argv[1],"signup")==0)
     {
         ofstream out("Trial.bin",ios::binary);
         c.sign_up();
-        c.sign_in();
+        // c.sign_in();
         out.write((char *)&c,sizeof(c));
         out.close();
-        c.display();
+        // c.display();
     }
-    else if(strcmp(argv[1],"read")==0)
+    else if(strcmp(argv[1],"signin")==0)
     {
         ifstream in("Trial.bin",ios::binary);
         in.read((char *)&d,sizeof(d));
         in.close();
-        d.display();
+        int n=d.sign_in();
+        if(n==1)
+            d.display();
+        else 
+            cout<<"The username and password that you entered do not match"<<endl;
     }
     return 0;
 }
