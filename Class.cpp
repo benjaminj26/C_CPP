@@ -12,33 +12,64 @@
 
 using namespace std;
 
+void hasher(char *str, char encrypted[])
+{
+    char hash[]={'#','u','i','g','l','t','o','d','k','y','r','s','a','z','c','p','x','v','j','f','n','q','e','w','m','b','h','\0'};
+    char letters[]={' ','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','\0'};
+    size_t size = strlen(str);
+    for(int i=0;i<size;++i)
+    {
+        for(int j=0;j<strlen(letters);++j)
+        {
+            if(str[i]==letters[j])
+            {
+                encrypted[i]=hash[j];
+            }
+        }
+    }
+    encrypted[size]='\0';
+}
+
 class College
 {
-    public:
+    private:
         int rno;
         char branch[20];
-        char usrname[20];
         char passwd[20];
+        int marks[5];
+        char phone[11];
+        char aadhar[15];
+
+    public:
+        char usrname[20];
         void sign_up()
         {
+            cout<<"Input your username: ";
+            cin>>usrname;
+            char *pass=getpass("Input your password: ");
+            cout<<pass<<endl;
+            hasher(pass,passwd);
+            cout<<"\nAccount created successfully\n";
             cout<<"Input Roll Number: ";
             cin>>rno;
             cin.ignore();
             cout<<"Input Branch: ";
             cin>>branch;
-            cout<<"Input your username: ";
-            cin>>usrname;
-            char *pass=getpass("Password: ");
-            strcpy(passwd,pass);
-            cout<<"\nAccount created successfully\n";
+            cout<<"Input your phone number: ";
+            cin>>phone;
+            cin.ignore();
+            cout<<"Input your aadhar number: ";
+            cin.getline(aadhar,15);
+            free(pass);
+            
         }
         int sign_in()
         {
             char un[20],pw[20];
-            cout<<"\nInput your username: ";
+            cout<<"Username: ";
             cin>>un;
             char *pass=getpass("Password: ");
-            strcpy(pw,pass);
+            hasher(pass,pw);
             if(strcmp(usrname,un)==0 && strcmp(passwd,pw)==0)
             {
                 return 1;
@@ -47,11 +78,14 @@ class College
             {
                 return 0;
             }
+            free(pass);
         }
         void display()
         {
-            cout<<"\nRoll Number: "<<rno<<endl;
-            cout<<"\nBranch: "<<branch<<endl;
+            cout<<"Roll Number: "<<rno<<endl;
+            cout<<"Branch: "<<branch<<endl;
+            cout<<"Phone Number: "<<phone<<endl;
+            cout<<"Aadhar Number: "<<aadhar<<endl;
         }
 };
 
@@ -62,10 +96,8 @@ int main(int argc, char *argv[])
     {
         ofstream out("Trial.bin",ios::binary);
         c.sign_up();
-        // c.sign_in();
         out.write((char *)&c,sizeof(c));
         out.close();
-        // c.display();
     }
     else if(strcmp(argv[1],"signin")==0)
     {
