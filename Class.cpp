@@ -12,7 +12,7 @@
 
 using namespace std;
 
-void hasher(char *str, char encrypted[])
+void hasher(char *str, char *encrypted)
 {
     char hash[]=
     {
