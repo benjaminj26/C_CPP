@@ -60,7 +60,6 @@ class College
             cout<<"Input your username: ";
             cin>>usrname;
             char *pass=getpass("Input your password: ");
-            cout<<pass<<endl;
             hasher(pass,passwd);
             cout<<"\nAccount created successfully\n";
             cout<<"Input Roll Number: ";
