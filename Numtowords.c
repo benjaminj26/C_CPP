@@ -6,7 +6,6 @@
 
 #include<stdio.h>
 #include<string.h>
-// #include<stdlib.h>
 
 void check(int *num, int *count, int *z_count, int *ten_count)
 {
