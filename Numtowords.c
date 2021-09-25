@@ -6,12 +6,13 @@
 
 #include<stdio.h>
 #include<string.h>
-#include<stdlib.h>
+// #include<stdlib.h>
 
-void check(int *num,int *count,int *z_count)
+void check(int *num, int *count, int *z_count, int *ten_count)
 {
-    char ones[10][7]={"\b","One","Two","Three","Four","Five","Six","Seven","Eight","Nine"};
-    char tens[10][8]={"\b","Ten","Twenty","Thirty","Forty","Fifty","Sixty","Seventy","Eighty","Ninety"};
+    char *ones[] = {"\b","One","Two","Three","Four","Five","Six","Seven","Eight","Nine"};
+    char *tens[] = {"\b","\b","Twenty","Thirty","Forty","Fifty","Sixty","Seventy","Eighty","Ninety"};
+    char *teens[] = {"Ten","Eleven","Twelve","Thirteen","Fourteen","Fifteen","Sixteen","Seventeen","Eighteen","Ninteteen"};
     if(*count==9)
     {
         if(num!=0 && *z_count==0)
@@ -19,12 +20,27 @@ void check(int *num,int *count,int *z_count)
     }
     else if(*count==8)
     {
-        printf("%s ",tens[*num]);
+        if(*num==1)
+        {
+            *ten_count=1;
+        }
+        else
+        {
+            *ten_count=0;
+            printf("%s ",tens[*num]);
+        } 
     }
     else if(*count==7)
     {
         if(num!=0 && *z_count<3)
-            printf("%s Million ",ones[*num]);
+        {
+            if(*ten_count==0)
+            {
+                printf("%s Million ",ones[*num]);
+            }
+            else
+                printf("%s Million ",teens[*num]);
+        }
     }
     else if(*count==6)
     {
@@ -33,12 +49,27 @@ void check(int *num,int *count,int *z_count)
     }
     else if(*count==5)
     {
-        printf("%s ",tens[*num]);
+        if(*num==1)
+        {
+            *ten_count=1;
+        }
+        else
+        {
+            *ten_count=0;
+            printf("%s ",tens[*num]);
+        } 
     }
     else if(*count==4)
     {
         if(num!=0 && *z_count<3)
-            printf("%s Thousand ",ones[*num]);
+        {
+            if(*ten_count==0)
+            {
+                printf("%s Thousand ",ones[*num]);
+            }
+            else
+                printf("%s Thousand ",teens[*num]);
+        }
     }
     else if(*count==3)
     {
@@ -47,17 +78,31 @@ void check(int *num,int *count,int *z_count)
     }
     else if(*count==2)
     {
-        printf("%s ",tens[*num]);
+        if(*num==1)
+        {
+            *ten_count=1;
+        }
+        else
+        {
+            *ten_count=0;
+            printf("%s ",tens[*num]);
+        }    
     }
     else if(*count==1)
     {
-        printf("%s ",ones[*num]);
+        if(*ten_count==0)
+        {
+            printf("%s",ones[*num]);
+        }
+        else
+            printf("%s",teens[*num]);
+            
     }
 }
 
 int main()
 {
-    int num,test,count=0,rev=0,z_count=0;
+    int num,test,count=0,rev=0,z_count=0,ten_count=0;
     printf("Input a number: ");
     scanf("%d",&num);
     if(num == 0)
@@ -89,7 +134,7 @@ int main()
                         z_count++;
                     else
                         z_count=0;
-                    check(&testn,&testc,&z_count);
+                    check(&testn,&testc,&z_count,&ten_count);
                     --testc;
                     rev/=10;
                 }
@@ -104,7 +149,7 @@ int main()
                         z_count++;
                     else
                         z_count=0;
-                    check(&testn,&testc,&z_count);
+                    check(&testn,&testc,&z_count,&ten_count);
                     --testc;
                     rev/=10;
                 }
