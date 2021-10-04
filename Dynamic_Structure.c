@@ -20,73 +20,74 @@ struct emp
 };
 
 //Function for reading the details of the employees
-void emp_input(int size, struct emp *employee[size])
+void emp_input(int size, struct emp *employee)
 {
     //Reading the employee id of the employee
     printf("Input the employee id: ");
-    scanf("%d",&employee[size]->empid);
+    scanf("%d",&employee[size].empid);
     getchar();
 
     //Reading the name of the employee
     printf("Input the name of the employee: ");
-    fgets(employee[size]->name,20,stdin);
-    employee[size]->name[strlen(employee[size]->name)-1]='\0';
+    fgets(employee[size].name,20,stdin);
+    employee[size].name[strlen(employee[size].name)-1]='\0';
 
     //Reading the surname of the emoloyee
     printf("Input the surname of the employee: ");
-    fgets(employee[size]->surname,50,stdin);
-    employee[size]->surname[strlen(employee[size]->surname)-1]='\0';
+    fgets(employee[size].surname,50,stdin);
+    employee[size].surname[strlen(employee[size].surname)-1]='\0';
 
     //Reading the address of the emoloyee
     printf("Input the address of the employee: ");
-    fgets(employee[size]->address,50,stdin);
-    employee[size]->address[strlen(employee[size]->address)-1]='\0';
+    fgets(employee[size].address,50,stdin);
+    employee[size].address[strlen(employee[size].address)-1]='\0';
 
     //Reading the phone number of the emoloyee
     printf("Input the phone number of the employee: ");
-    fgets(employee[size]->phone_num,12,stdin);
-    employee[size]->phone_num[strlen(employee[size]->phone_num)-1]='\0';
+    fgets(employee[size].phone_num,12,stdin);
+    employee[size].phone_num[strlen(employee[size].phone_num)-1]='\0';
 
     //Reading the job of the emoloyee
     printf("Input the job of the employee: ");
-    fgets(employee[size]->job,50,stdin);
-    employee[size]->job[strlen(employee[size]->job)-1]='\0';
+    fgets(employee[size].job,50,stdin);
+    employee[size].job[strlen(employee[size].job)-1]='\0';
 }
 
 //Function for displaying the details of the employees
-void emp_display(int size, struct emp *employee[size])
+void emp_display(int size, struct emp *employee)
 {
-    for(int i=0; i<size; ++i)
+    for(int i=0; i<size-1; ++i)
     {
         printf("\n<<Details of Employee%d>>\n\n",i+1);
-        printf("Employee ID: %d\n",employee[i]->empid);
-        printf("Name : ");puts(employee[i]->name);
-        printf("Surname: ");puts(employee[i]->surname);
-        printf("Address: ");puts(employee[i]->address);
-        printf("Phone Number: ");puts(employee[i]->phone_num);
-        printf("Job: ");puts(employee[i]->job);
+        printf("Employee ID: %d\n",employee[i].empid);
+        printf("Name : ");puts(employee[i].name);
+        printf("Surname: ");puts(employee[i].surname);
+        printf("Address: ");puts(employee[i].address);
+        printf("Phone Number: ");puts(employee[i].phone_num);
+        printf("Job: ");puts(employee[i].job);
+        employee++;
     }
     printf("\n");
 }
 
 //Function for deleting the details of the employee
-void emp_delete(int index, int size, struct emp *employee[size])
+void emp_delete(int index, int size, struct emp *employee)
 {
     for(int i=index; i<size-1; ++i)
     {
-        employee[i]->empid = employee[i+1]->empid;
-        strcpy(employee[i]->name, employee[i+1]->name);
-        strcpy(employee[i]->surname, employee[i+1]->surname);
-        strcpy(employee[i]->address, employee[i+1]->address);
-        strcpy(employee[i]->phone_num, employee[i+1]->phone_num);
-        strcpy(employee[i]->job, employee[i+1]->job); 
+        employee[i].empid = employee[i+1].empid;
+        strcpy(employee[i].name, employee[i+1].name);
+        strcpy(employee[i].surname, employee[i+1].surname);
+        strcpy(employee[i].address, employee[i+1].address);
+        strcpy(employee[i].phone_num, employee[i+1].phone_num);
+        strcpy(employee[i].job, employee[i+1].job); 
     }
     printf("\nDeleted Successfully!!!\n");
 }
 
 int main()
 {
-    size_t size=0;
+    size_t size=1;
     int option;
     struct emp *employees = (struct emp*)malloc(size*sizeof(struct emp));
     do
@@ -97,15 +98,15 @@ int main()
         //Reading the details of a new employee
         if(option == 1)
         {
-            size++;
-            employees= realloc(employees,(size)*sizeof(struct emp));
-            emp_input(size-1,&employees);
+            emp_input(size-1,employees);
+            employees = (struct emp*)realloc(employees,(size)*sizeof(struct emp));
+            size+=1;
         }
 
         //Printing the details of all the employees
         else if(option == 2)
         {
-            emp_display(size,&employees);
+            emp_display(size,employees);
         }
 
         //Deleting all the details of an employee
@@ -128,9 +129,9 @@ int main()
                 printf("\nINVALID USER ID!!!\n");
             else 
             {
-                emp_delete(i,size,&employees);
-                size--;
-                employees= realloc(employees,(size)*sizeof(struct emp));
+                emp_delete(i,size,employees);
+                size-=1;
+                employees = (struct emp*)realloc(employees,(size)*sizeof(struct emp));
 
             }
         }
