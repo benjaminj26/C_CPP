@@ -11,7 +11,7 @@
 //Declaring structure emp
 struct emp
 {
-    size_t empid;
+    int empid;
     char name[20];
     char surname[50];
     char address[50];
@@ -22,7 +22,6 @@ struct emp
 //Function for reading the details of the employeess
 void emp_input(size_t size, struct emp *employee)
 {
-    printf("%d\n",size);
     //Reading the employee id of the employee
     printf("Input the employee id: ");
     scanf("%d",&employee[size].empid);
@@ -57,7 +56,6 @@ void emp_input(size_t size, struct emp *employee)
 //Function for displaying the details of the employees
 void emp_display(size_t size, struct emp *employee)
 {
-    // printf("%d\n",size);
     for(int i=0; i<size; ++i)
     {
         printf("\n<<Details of Employee%d>>\n\n",i+1);
@@ -67,7 +65,6 @@ void emp_display(size_t size, struct emp *employee)
         printf("Address: ");puts(employee[i].address);
         printf("Phone Number: ");puts(employee[i].phone_num);
         printf("Job: ");puts(employee[i].job);
-        employee++;
     }
     printf("\n");
 }
@@ -89,7 +86,7 @@ void emp_delete(size_t index, size_t size, struct emp *employee)
 
 int main()
 {
-    size_t size=1;
+    size_t size=0;
     int option;
     struct emp *employees = (struct emp*)malloc(size*sizeof(struct emp));
     do
@@ -100,15 +97,15 @@ int main()
         //Reading the details of a new employee
         if(option == 1)
         {
-            emp_input(size-1,employees);
             size+=1;
             employees = (struct emp*)realloc(employees,(size)*sizeof(struct emp));
+            emp_input(size-1,employees);
         }
 
         //Printing the details of all the employees
         else if(option == 2)
         {
-            emp_display(size-1,employees);
+            emp_display(size,employees);
         }
 
         //Deleting all the details of an employee
@@ -200,6 +197,8 @@ int main()
             }
         }
         else if(option == 5)
+            exit(0);
+        else
             exit(0);
     }while(1);
     free(employees);
