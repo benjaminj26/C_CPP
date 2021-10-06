@@ -56,17 +56,29 @@ void emp_input(size_t size, struct emp *employee)
 //Function for displaying the details of the employees
 void emp_display(size_t size, struct emp *employee)
 {
-    for(int i=0; i<size; ++i)
+    if(size == 0)
+        printf("\nThe employee list is empty\n");
+    else
     {
-        printf("\n<<Details of Employee%d>>\n\n",i+1);
-        printf("Employee ID: %d\n",employee[i].empid);
-        printf("Name : ");puts(employee[i].name);
-        printf("Surname: ");puts(employee[i].surname);
-        printf("Address: ");puts(employee[i].address);
-        printf("Phone Number: ");puts(employee[i].phone_num);
-        printf("Job: ");puts(employee[i].job);
+        for(int i=0; i<size; ++i)
+        {
+            printf("\n<<Details of Employee%d>>\n\n",i+1);
+            //Printing ID of the Employee
+            printf("Employee ID: %d\n",employee[i].empid);
+            //Printing Name of the Employee
+            printf("Name : ");puts(employee[i].name);
+            //Printing Surname of the Employee
+            printf("Surname: ");puts(employee[i].surname);
+            //Printing Address of the Employee
+            printf("Address: ");puts(employee[i].address);
+            //Printing Phone Number of the Employee
+            printf("Phone Number: ");puts(employee[i].phone_num);
+            //Printing Job of the Employee
+            printf("Job: ");puts(employee[i].job);
+        }
+        printf("\n");
     }
-    printf("\n");
+    
 }
 
 //Function for deleting the details of the employee
@@ -76,6 +88,8 @@ void emp_delete(size_t index, size_t size, struct emp *employee)
     {
         for(int i=index; i<size-1; ++i)
         {
+            /*Copying the details of the employee in front of the employee
+            to be deleted to the address of the employee to be deleted*/
             employee[i].empid = employee[i+1].empid;
             strcpy(employee[i].name, employee[i+1].name);
             strcpy(employee[i].surname, employee[i+1].surname);
