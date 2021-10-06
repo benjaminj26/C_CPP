@@ -12,7 +12,7 @@
 
 int main()
 {
-	char *ptr=NULL,ch;
+    char *ptr=NULL,ch;
     size_t buffsize=0;
     ptr=(char *)malloc(1*sizeof(char));
     printf("Input a string:\n");
