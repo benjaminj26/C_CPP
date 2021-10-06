@@ -44,7 +44,7 @@ void emp_input(size_t size, struct emp *employee)
 
     //Reading the phone number of the emoloyee
     printf("Input the phone number of the employee: ");
-    fgets(employee[size].phone_num,11,stdin);
+    fgets(employee[size].phone_num,12,stdin);
     employee[size].phone_num[strlen(employee[size].phone_num)-1]='\0';
 
     //Reading the job of the emoloyee
@@ -137,7 +137,7 @@ int main()
         //Editing the details of an employee
         else if(option == 4)
         {
-            size_t id,i,flag=0;
+            int id,i,flag=0;
             printf("Enter the employee id of the employee you want to edit: ");
             scanf("%d",&id);
             for(i=0;i<size;++i)
@@ -154,7 +154,7 @@ int main()
                 printf("\nINVALID USER ID!!!\n");
             else
             {
-                size_t edit_choice;
+                int edit_choice;
                 char ch;
                 do
                 {
@@ -182,7 +182,7 @@ int main()
                     else if(edit_choice == 4)
                     {
                         printf("Input the new phone number: ");
-                        fgets(employees[i].phone_num,11,stdin);
+                        fgets(employees[i].phone_num,12,stdin);
                         employees[i].phone_num[strlen(employees[i].phone_num)-1]='\0';
                     }
                     else if(edit_choice == 5)
