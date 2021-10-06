@@ -23,23 +23,38 @@ struct emp
 void emp_input(size_t size, struct emp *employee)
 {
     //Reading the employee id of the employee
-    printf("Input the employee id: ");
-    scanf("%d",&employee[size].empid);
+    INPUT:printf("Input the employee id: ");
+    int id,flag=0;
+    scanf("%d",&id);
+    for(int i=0; i<size; ++i)
+    {
+        if(id == employee[i].empid)
+        {
+            flag+=1;
+        }
+    }
+    if(flag == 0)
+        employee[size].empid = id;
+    else
+    {
+        printf("\nEmployee ID already used!!!\n\n");
+        goto INPUT;
+    }
     getchar();
 
     //Reading the name of the employee
     printf("Input the name of the employee: ");
-    fgets(employee[size].name,19,stdin);
+    fgets(employee[size].name,20,stdin);
     employee[size].name[strlen(employee[size].name)-1]='\0';
 
     //Reading the surname of the emoloyee
     printf("Input the surname of the employee: ");
-    fgets(employee[size].surname,49,stdin);
+    fgets(employee[size].surname,50,stdin);
     employee[size].surname[strlen(employee[size].surname)-1]='\0';
 
     //Reading the address of the emoloyee
     printf("Input the address of the employee: ");
-    fgets(employee[size].address,49,stdin);
+    fgets(employee[size].address,50,stdin);
     employee[size].address[strlen(employee[size].address)-1]='\0';
 
     //Reading the phone number of the emoloyee
@@ -49,7 +64,7 @@ void emp_input(size_t size, struct emp *employee)
 
     //Reading the job of the emoloyee
     printf("Input the job of the employee: ");
-    fgets(employee[size].job,49,stdin);
+    fgets(employee[size].job,50,stdin);
     employee[size].job[strlen(employee[size].job)-1]='\0';
 }
 
@@ -181,19 +196,19 @@ int main()
                     if(edit_choice == 1)
                     {
                         printf("Input the new name: ");
-                        fgets(employees[i].name,19,stdin);
+                        fgets(employees[i].name,20,stdin);
                         employees[i].name[strlen(employees[i].name)-1]='\0';
                     }
                     else if(edit_choice == 2)
                     {
                         printf("Input the new surname: ");
-                        fgets(employees[i].surname,49,stdin);
+                        fgets(employees[i].surname,50,stdin);
                         employees[i].surname[strlen(employees[i].surname)-1]='\0';
                     }
                     else if(edit_choice == 3)
                     {
                         printf("Input the new address: ");
-                        fgets(employees[i].address,49,stdin);
+                        fgets(employees[i].address,50,stdin);
                         employees[i].address[strlen(employees[i].address)-1]='\0';
                     }
                     else if(edit_choice == 4)
@@ -205,7 +220,7 @@ int main()
                     else if(edit_choice == 5)
                     {
                         printf("Input the new job: ");
-                        fgets(employees[i].job,49,stdin);
+                        fgets(employees[i].job,50,stdin);
                         employees[i].job[strlen(employees[i].job)-1]='\0';
                     }
                     printf("Do you want to continue?(y/n): ");
