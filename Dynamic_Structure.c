@@ -72,14 +72,17 @@ void emp_display(size_t size, struct emp *employee)
 //Function for deleting the details of the employee
 void emp_delete(size_t index, size_t size, struct emp *employee)
 {
-    for(int i=index; i<size-1; ++i)
+    if(index < size)
     {
-        employee[i].empid = employee[i+1].empid;
-        strcpy(employee[i].name, employee[i+1].name);
-        strcpy(employee[i].surname, employee[i+1].surname);
-        strcpy(employee[i].address, employee[i+1].address);
-        strcpy(employee[i].phone_num, employee[i+1].phone_num);
-        strcpy(employee[i].job, employee[i+1].job); 
+        for(int i=index; i<size-1; ++i)
+        {
+            employee[i].empid = employee[i+1].empid;
+            strcpy(employee[i].name, employee[i+1].name);
+            strcpy(employee[i].surname, employee[i+1].surname);
+            strcpy(employee[i].address, employee[i+1].address);
+            strcpy(employee[i].phone_num, employee[i+1].phone_num);
+            strcpy(employee[i].job, employee[i+1].job); 
+        }
     }
     printf("\nDeleted Successfully!!!\n");
 }
