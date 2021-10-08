@@ -150,7 +150,7 @@ int main()
     size_t size=0;
     int option;
     struct emp *employees = (struct emp*)malloc(size*sizeof(struct emp));
-    do
+    LOOP:do
     {
         printf("\n1.Input the details of a new employee\n2.Display the details of all the employees\n3.Delete all the details of an employee\n4.Edit the details of an employee\n5.Exit\nInput your choice: ");
         scanf("%d",&option);
@@ -218,7 +218,7 @@ int main()
                 size_t len;
                 int edit_choice;
                 char ch;
-                LOOP:do
+                do
                 {
                     printf("\n1.Name\n2.Surname\n3.Address\n4.Phone Number\n5.Job\nInput the detail you want to edit: ");
                     scanf("%d",&edit_choice);
@@ -258,7 +258,7 @@ int main()
                         getline(&employees[i].job,&len,stdin);
                         employees[i].job[strlen(employees[i].job)-1]='\0';
                     }
-                    printf("Do you want to continue?(y/n): ");
+                    printf("Do you want to keep editing?(y/n): ");
                     ch=getchar();
                 }while(ch == 'y');
             }
