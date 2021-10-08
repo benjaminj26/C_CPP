@@ -1,5 +1,5 @@
 /*
-    Program to store the details of employees in a dynamically allocated structure
+    Program to store the details of employees in a dynamically allocated structure with dynamically allocated members
     Author : Benjamin Joseph
     Date : 04-10-2021
 */
