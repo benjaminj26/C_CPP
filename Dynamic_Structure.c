@@ -11,7 +11,7 @@
 //Declaring structure emp
 struct emp
 {
-    int empid;
+    unsigned int empid;
     char *name;
     char *surname;
     char *address;
@@ -25,8 +25,8 @@ void emp_input(size_t size, struct emp *employee)
     size_t len;
     //Reading the employee id of the employee
     INPUT:printf("Input the employee id: ");
-    int id,flag=0;
-    scanf("%d",&id);
+    unsigned int id,flag=0;
+    scanf("%u",&id);
     for(int i=0; i<size; ++i)
     {
         if(id == employee[i].empid)
@@ -90,7 +90,7 @@ void emp_display(size_t size, struct emp *employee)
         {
             printf("\n<<Details of Employee%d>>\n\n",i+1);
             //Printing ID of the Employee
-            printf("Employee ID: %d\n",employee[i].empid);
+            printf("Employee ID: %u\n",employee[i].empid);
             //Printing Name of the Employee
             printf("Name : ");puts(employee[i].name);
             //Printing Surname of the Employee
@@ -173,9 +173,9 @@ int main()
         //Deleting all the details of an employee
         else if(option == '3')
         {
-            size_t id,i,flag=0;
+            unsigned int id,i,flag=0;
             printf("Input the employee id of the employee: ");
-            scanf("%d",&id);
+            scanf("%u",&id);
             for(i=0;i<size;++i)
             {
                 if(employees[i].empid == id)
@@ -199,7 +199,7 @@ int main()
         //Editing the details of an employee
         else if(option == '4')
         {
-            int id,i,flag=0;
+            unsigned int id,i,flag=0;
             printf("Enter the employee id of the employee you want to edit: ");
             scanf("%d",&id);
             for(i=0;i<size;++i)
