@@ -7,6 +7,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include<ctype.h>
 
 //Declaring structure emp
 struct emp
@@ -148,15 +149,16 @@ void free_all(int size, struct emp *employee)
 int main()
 {
     size_t size=0;
-    int option;
+    char option;
     struct emp *employees = (struct emp*)malloc(size*sizeof(struct emp));
     LOOP:do
     {
         printf("\n1.Input the details of a new employee\n2.Display the details of all the employees\n3.Delete all the details of an employee\n4.Edit the details of an employee\n5.Exit\nInput your choice: ");
-        scanf("%d",&option);
-        
+        scanf("%c",&option);
+        getchar();
+
         //Reading the details of a new employee
-        if(option == 1)
+        if(option == '1')
         {
             size+=1;
             employees = (struct emp*)realloc(employees,(size)*sizeof(struct emp));
@@ -164,13 +166,13 @@ int main()
         }
 
         //Printing the details of all the employees
-        else if(option == 2)
+        else if(option == '2')
         {
             emp_display(size,employees);
         }
 
         //Deleting all the details of an employee
-        else if(option == 3)
+        else if(option == '3')
         {
             size_t id,i,flag=0;
             printf("Input the employee id of the employee: ");
@@ -196,7 +198,7 @@ int main()
             }
         }
         //Editing the details of an employee
-        else if(option == 4)
+        else if(option == '4')
         {
             int id,i,flag=0;
             printf("Enter the employee id of the employee you want to edit: ");
@@ -216,42 +218,42 @@ int main()
             else
             {
                 size_t len;
-                int edit_choice;
+                char edit_choice;
                 char ch;
                 do
                 {
                     printf("\n1.Name\n2.Surname\n3.Address\n4.Phone Number\n5.Job\nInput the detail you want to edit: ");
-                    scanf("%d",&edit_choice);
+                    scanf("%c",&edit_choice);
                     getchar();
-                    if(edit_choice == 1)
+                    if(edit_choice == '1')
                     {
                         len=10;
                         printf("Input the new name: ");
                         getline(&employees[i].name,&len,stdin);
                         employees[i].name[strlen(employees[i].name)-1]='\0';
                     }
-                    else if(edit_choice == 2)
+                    else if(edit_choice == '2')
                     {
                         len=10;
                         printf("Input the new surname: ");
                         getline(&employees[i].surname,&len,stdin);
                         employees[i].surname[strlen(employees[i].surname)-1]='\0';
                     }
-                    else if(edit_choice == 3)
+                    else if(edit_choice == '3')
                     {
                         len=10;
                         printf("Input the new address: ");
                         getline(&employees[i].address,&len,stdin);
                         employees[i].address[strlen(employees[i].address)-1]='\0';
                     }
-                    else if(edit_choice == 4)
+                    else if(edit_choice == '4')
                     {
                         len=10;
                         printf("Input the new phone number: ");
                         getline(&employees[i].phone_num,&len,stdin);
                         employees[i].phone_num[strlen(employees[i].phone_num)-1]='\0';
                     }
-                    else if(edit_choice == 5)
+                    else if(edit_choice == '5')
                     {
                         len=10;
                         printf("Input the new job: ");
@@ -263,14 +265,16 @@ int main()
                 }while(ch == 'y');
             }
         }
-        else if(option == 5)
+        else if(option == '5')
         {
             free_all(size,employees);
             free(employees);
             exit(0);
         }
         else
+        {
             goto LOOP;
+        }
     }while(1);
     return 0;
 }
