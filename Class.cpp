@@ -104,23 +104,28 @@ class College
 int main(int argc, char *argv[])
 {
     College c,d;
-    if(strcmp(argv[1],"signup")==0)
+    if(argc <= 1)
+        printf("\nToo few arguments!!\n\n");
+    else
     {
-        ofstream out("Trial.bin",ios::binary);
-        c.sign_up();
-        out.write((char *)&c,sizeof(c));
-        out.close();
-    }
-    else if(strcmp(argv[1],"signin")==0)
-    {
-        ifstream in("Trial.bin",ios::binary);
-        in.read((char *)&d,sizeof(d));
-        in.close();
-        int n=d.sign_in();
-        if(n==1)
-            d.display();
-        else 
-            cout<<"The username and password that you entered do not match"<<endl;
+        if(strcmp(argv[1],"signup")==0)
+        {
+            ofstream out("Files/Class.bin",ios::binary);
+            c.sign_up();
+            out.write((char *)&c,sizeof(c));
+            out.close();
+        }
+        else if(strcmp(argv[1],"signin")==0)
+        {
+            ifstream in("Files/Class.bin",ios::binary);
+            in.read((char *)&d,sizeof(d));
+            in.close();
+            int n=d.sign_in();
+            if(n==1)
+                d.display();
+            else 
+                cout<<"The username and password that you entered do not match"<<endl;
+        }
     }
     return 0;
 }
