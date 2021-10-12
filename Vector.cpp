@@ -1,3 +1,9 @@
+/*
+	Program to demonstrate the use of std::vector class
+	Author : Benjamin Joseph
+	Date : 02-10-2021
+*/
+
 #include<iostream>
 #include<vector>
 
