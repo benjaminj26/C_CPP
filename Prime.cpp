@@ -1,7 +1,7 @@
 /*
     This is a C++ program that accepts a number from the user and checks whether it is a prime number o  
     Author: Benjamin Joseph
-    Date: 03/07/2021
+    Date: 08/07/2021
 */
 #include<iostream>
 
