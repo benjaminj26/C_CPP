@@ -1,7 +1,7 @@
 /*
     Program to impelement Binary Search 
     Author : Benjamin Joseph
-    Date : 04-10-2021
+    Date : 05-10-2021
 */
 
 #include<stdio.h>
