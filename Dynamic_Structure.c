@@ -202,6 +202,7 @@ int main()
             unsigned int id,i,flag=0;
             printf("Enter the employee id of the employee you want to edit: ");
             scanf("%d",&id);
+            getchar();
             for(i=0;i<size;++i)
             {
                 if(employees[i].empid == id)
@@ -222,7 +223,7 @@ int main()
                 do
                 {
                     printf("\n1.Name\n2.Surname\n3.Address\n4.Phone Number\n5.Job\nInput the detail you want to edit: ");
-                    scanf("%c",&edit_choice);
+                    edit_choice = getchar();
                     getchar();
                     if(edit_choice == '1')
                     {
@@ -261,6 +262,7 @@ int main()
                     }
                     printf("Do you want to keep editing?(y/n): ");
                     ch=getchar();
+                    getchar();
                 }while(ch == 'y');
             }
         }
