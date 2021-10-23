@@ -10,17 +10,16 @@
 
 void primerange(int low, int upp)
 {
-    // printf("Input the lower limit: ");
-    // int low;scanf("%d",&low);
-    // printf("Input the upper limit: ");
-    // int upp;scanf("%d",&upp);
     for(int i=low;i<upp;i+=1)
     {
         int flag=0;
-        for(int j=2;j<(i+1)/2;j+=1)
+        for(int j=2;j<sqrt(i);j+=1)
         {
             if(i%j==0)
+            {
                 flag+=1;
+                break;
+            }
         }
         if(flag==0 && i!=1 && i!=4)
             printf("%d\n",i);
