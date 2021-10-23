@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
         for(int i=low;i<upp;i+=1)
         {
             int flag=0;
-            for(int j=2;j<sqrt(i);j+=1)
+            for(int j=2;j<=sqrt(i);j+=1)
             {
                 if(i%j==0)
                 {
