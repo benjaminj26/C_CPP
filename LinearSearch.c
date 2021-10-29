@@ -7,17 +7,22 @@
 
 int main()
 {
-    int Ar[10]={90,70,50,20,10,40,100,60,30,80};
-    printf("Enter the integer to be searched(10-100): ");
-    int n,flag=0;
-    scanf("%d",&n);
-    for(int i=0;i<10;i=i+1)
+    printf("Input the number of elements: ");
+    int num,flag=0;
+    scanf("%d",&num);
+    printf("Input %d elements:\n", num);
+    int Ar[num];
+    for(int i=0;i<num;++i)
+    {
+        scanf("%d",&Ar[i]);
+    }
+    for(int i=0;i<num;++i)
     {
         if(Ar[i]==n)
-        { 
-         printf("The position of the integer is: %d",i);
-         flag=flag+1;
-         break;
+        {
+            printf("The position of the integer is: %d",i);
+            flag=flag+1;
+            break;
         }
     }
     if(flag==0)
