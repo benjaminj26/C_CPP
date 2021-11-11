@@ -1,7 +1,7 @@
 /*
     This is a program to search for an element in an array by taking input from the user and return the position of the element
     Author: Benjamin Joseph
-    Date: 03/07/2021
+    Date: 05/07/2021
 */
 #include<stdio.h>
 
