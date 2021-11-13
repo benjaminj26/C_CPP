@@ -1,7 +1,7 @@
 /*
-		This is a program to take input fromm the user and form a matrix
-		Author: Benjamin Joseph
-    Date: 03/07/2021
+	This is a program to take input fromm the user and form a matrix
+	Author: Benjamin Joseph
+	Date: 03/07/2021
 */
 #include<stdio.h>
 
