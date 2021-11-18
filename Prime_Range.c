@@ -9,9 +9,7 @@
 
 int main(int argc, char *argv[])
 {
-    printf("Input the lower limit: ");
     int low = atoi(argv[1]);
-    printf("Input the upper limit: ");
     int upp = atoi(argv[2]);
     if(low<upp)
     {
