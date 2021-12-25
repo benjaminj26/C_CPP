@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
     else if(strcmp(op,"bsort")==0)
     {
         int ar[argc-2];
-        for(i=0,j=2;i<argc-2,j<argc;++i,++j)
+        for(i=0,j=2;i<argc-2 && j<argc;++i,++j)
             ar[i]=atoi(argv[j]);
         bsort(ar,argc-2);
     }
