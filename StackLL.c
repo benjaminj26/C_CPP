@@ -74,20 +74,13 @@ void push(struct Employee **top)
     printf("\n");
 }
 
-void delete_emp(struct Employee **top)
+void pop(struct Employee **top)
 {
     if(*top != NULL)
     {
-        struct Employee *e = (struct Employee*)malloc(sizeof(struct Employee));
-        e->empid = (*top)->empid;
-        e->name = (char*)malloc(strlen((*top)->name));
-        strcpy(e->name, (*top)->name);
-        e->address = (char*)malloc(strlen((*top)->address));
-        strcpy(e->address, (*top)->address);
-        e->department = (char*)malloc(strlen((*top)->department));
-        strcpy(e->department, (*top)->department);
+        struct Employee *e = *top;
         *top = (*top)->next;
-        printf("The details of the following employee are deleted\n");
+        printf("\nThe details of the following employee are deleted\n");
         display_emp(e);
         printf("\n");
         free(e->name);
@@ -96,8 +89,8 @@ void delete_emp(struct Employee **top)
         e->next = NULL;
         free(e);
     }
-    else 
-    {   
+    else
+    {
         printf("\nStack is Empty\n\n");
     }
 }
@@ -110,11 +103,11 @@ int main()
     {
         printf("1.Push\n2.Pop\n3.Display\n4.Clear\n5.Exit\nEnter your choice: ");
         scanf("%d",&option);
-        switch (option) 
+        switch (option)
         {
             case 1: push(&top);
             break;
-            case 2: delete_emp(&top);
+            case 2: pop(&top);
             break;
             case 3: display_emp(top);
             break;
