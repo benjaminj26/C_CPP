@@ -17,6 +17,7 @@ struct Employee
     struct Employee *next;
 };
 
+//Function to display the details of an employee
 void display_emp(struct Employee *top)
 {
     if(top == NULL)
@@ -31,8 +32,9 @@ void display_emp(struct Employee *top)
         printf("Department: %s\n", top->department);
         printf("\n");
     }
-}
+} 
 
+//Function to create a variable of type struct Employee on the heap 
 void create_emp(struct Employee **e)
 {
     size_t buff_size = 10;
@@ -42,6 +44,7 @@ void create_emp(struct Employee **e)
     (*e)->department = (char*)calloc(buff_size,sizeof(char));
 }
 
+//Function to push a node onto the stack
 void push(struct Employee **top)
 {
     size_t buff_size = 10;
@@ -74,6 +77,7 @@ void push(struct Employee **top)
     printf("\n");
 }
 
+//Function to pop a node from the stack
 void pop(struct Employee **top)
 {
     if(*top != NULL)
