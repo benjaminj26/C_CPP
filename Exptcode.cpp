@@ -8,20 +8,16 @@ int main()
     int t,i,k,l;
     cout<<"Input the number of test cases: ";
     cin>>t;
-
     cout<<"Input "<<t<<" strings:"<<endl;
     char s[t][10];
     for(i=0;i<t;++i)
     {
         cin>>s[i];
     }
-    // for(i=0;i<t;++i)
-    //     cout<<s[i]<<endl;
     int n1;
     cout<<"Input the names of the gem stones:"<<endl;
     cin>>j;
     int n2=strlen(j);
-    // cout<<"s="<<n1<<" j="<<n2;
     for(i=0;i<t;++i)
     {
         int count=0;
