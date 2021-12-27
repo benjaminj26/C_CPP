@@ -32,9 +32,9 @@ void display_emp(struct Employee *top)
         printf("Department: %s\n", top->department);
         printf("\n");
     }
-} 
+}
 
-//Function to create a variable of type struct Employee on the heap 
+//Function to create a variable of type struct Employee on the heap
 void create_emp(struct Employee **e)
 {
     size_t buff_size = 10;
@@ -109,15 +109,20 @@ int main()
         scanf("%d",&option);
         switch (option)
         {
-            case 1: push(&top);
-            break;
-            case 2: pop(&top);
-            break;
-            case 3: display_emp(top);
-            break;
-            case 4: system("clear");
-            break;
-            case 5: exit(0);
+            case 1:
+                push(&top);
+                break;
+            case 2:
+                pop(&top);
+                break;
+            case 3:
+                display_emp(top);
+                break;
+            case 4:
+                system("clear");
+                break;
+            case 5:
+                exit(0);
         }
     }while(1);
 }
