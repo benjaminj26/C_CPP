@@ -61,7 +61,7 @@ void Enqueue(struct Employee **rear, struct Employee **front)
     {
         *rear = *front = e;
     }
-    else 
+    else
     {
         (*rear)->next = e;
         *rear = e;
@@ -80,6 +80,9 @@ void Dequeue(struct Employee **front)
         Employee_Display(*front);
         struct Employee *e = *front;
         *front = (*front)->next;
+        free(e->name);
+        free(e->address);
+        free(e->department);
         free(e);
     }
 }
@@ -88,7 +91,7 @@ int main()
 {
     struct Employee *front = NULL, *rear = NULL;
     int option;
-    do 
+    do
     {
         printf("1.Enqueue\n2.Dequeue\n3.Display Front Element\n4.Clear the screen\n5.Exit\nEnter your choice: ");
         scanf("%d",&option);
@@ -100,17 +103,17 @@ int main()
             case 2:
                 Dequeue(&front);
                 break;
-            case 3: 
+            case 3:
                 Employee_Display(front);
                 break;
-            case 4: 
+            case 4:
                 system("clear");
                 break;
             case 5:
                 exit(0);
             default:
                 printf("\nInvalid Input\n");
-        }      
-        printf("\n"); 
+        }
+        printf("\n");
     }while(1);
 }
