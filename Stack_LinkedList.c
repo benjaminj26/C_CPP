@@ -116,6 +116,7 @@ int main()
                 pop(&top);
                 break;
             case 3:
+                printf("\nDetails of the Employee at the top of the stack\n");
                 display_emp(top);
                 break;
             case 4:
