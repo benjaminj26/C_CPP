@@ -22,15 +22,14 @@ void display_emp(struct Employee *top)
 {
     if(top == NULL)
     {
-        printf("\nStack is Empty\n\n");
+        printf("\nStack is Empty\n");
     }
     else
     {
         printf("\nEmployee ID: %u\n", top->empid);
-        printf("Name: %s\n", top->name);
-        printf("Address: %s\n", top->address);
-        printf("Department: %s\n", top->department);
-        printf("\n");
+        printf("Name: %s", top->name);
+        printf("Address: %s", top->address);
+        printf("Department: %s", top->department);
     }
 }
 
@@ -55,15 +54,12 @@ void push(struct Employee **top)
     getchar();
     printf("Enter the name of the Employee: ");
     getline(&e->name,&buff_size,stdin);
-    e->name[strlen(e->name)-1] = '\0';
     printf("Enter the address of the Employee: ");
     buff_size = 10;
     getline(&e->address,&buff_size,stdin);
-    e->address[strlen(e->address)-1] = '\0';
     printf("Enter the department of the Employee: ");
     buff_size = 10;
     getline(&e->department,&buff_size,stdin);
-    e->department[strlen(e->department)-1] = '\0';
     if (*top == NULL)
     {
         e->next = NULL;
@@ -74,7 +70,6 @@ void push(struct Employee **top)
         e->next = *top;
         *top = e;
     }
-    printf("\n");
 }
 
 //Function to pop a node from the stack
@@ -95,7 +90,7 @@ void pop(struct Employee **top)
     }
     else
     {
-        printf("\nStack is Empty\n\n");
+        printf("\nStack is Empty\n");
     }
 }
 
@@ -124,6 +119,9 @@ int main()
                 break;
             case 5:
                 exit(0);
+            default:
+                printf("\nInvalid Input\n");
         }
+        printf("\n");
     }while(1);
 }
