@@ -1,5 +1,5 @@
 /*
-    C-Program to convert an infix expression to postfix expression
+    C-Program to convert an infix expression to postfix expression using Stack
     Author : Benjamin Joseph
     Date : 08-01-2022
 */
