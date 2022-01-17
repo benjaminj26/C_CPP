@@ -16,6 +16,9 @@ int main()
     {
         scanf("%d",&Ar[i]);
     }
+    printf("Enter the number to be searched: ");
+    int n;
+    scanf("%d", &n);
     for(int i=0;i<num;++i)
     {
         if(Ar[i]==n)

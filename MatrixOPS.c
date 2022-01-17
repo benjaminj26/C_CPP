@@ -51,7 +51,7 @@ void mat_mul(int r1, int c1, int c2, int mat1[r1][c1], int mat2[c1][c2], int mat
         for(int j=0;j<c2;++j)
         {
             mat3[i][j]=0;
-            for(int col1=0, row2=0; col1<c1, row2<c1; ++col1, ++row2) 
+            for(int col1=0, row2=0; col1<c1 && row2<c1; ++col1, ++row2) 
                 mat3[i][j]+=mat1[i][col1] * mat2[row2][j];    
         }
     }
