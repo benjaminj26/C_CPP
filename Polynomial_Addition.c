@@ -37,18 +37,19 @@ struct node* create_node(int power, int coeff)
     return new_node;
 }
 
-void polynomial_init(int degree, struct node** head, struct node** tail)
+void polynomial_init(int degree, struct node** head)
 {
+    struct node *tail;
     for(int i=degree; i>=0; --i)
     {
-        if(*head == NULL && *tail == NULL)
+        if(*head == NULL && tail == NULL)
         {
             printf("Enter the coefficient of the term of power %d: ",i);
             int coeff;
             scanf("%d", &coeff);
             struct node *new_node = create_node(i, coeff);
             *head = new_node;
-            *tail = new_node;
+            tail = new_node;
         }
         else
         {
@@ -56,8 +57,8 @@ void polynomial_init(int degree, struct node** head, struct node** tail)
             int coeff;
             scanf("%d", &coeff);
             struct node *new_node = create_node(i, coeff);
-            (*tail)->next = new_node;
-            *tail = new_node;
+            tail->next = new_node;
+            tail = new_node;
         }
     }
 }
@@ -124,18 +125,18 @@ void free_node(struct node *polynomial)
 int main()
 {
     int degree1, degree2;
-    struct node *head1 = NULL, *tail1 = NULL, *head2 = NULL, *tail2 = NULL;
+    struct node *head1 = NULL, *head2 = NULL;
     
     printf("Enter the degree of the first polynomial: ");
     scanf("%d", &degree1);
-    polynomial_init(degree1, &head1, &tail1);
+    polynomial_init(degree1, &head1);
     printf("\nThe first polynomial is:\n");
     display(head1);
     printf("\n");
     
     printf("Enter the degree of the second polynomial: ");
     scanf("%d", &degree2);
-    polynomial_init(degree2, &head2, &tail2);
+    polynomial_init(degree2, &head2);
     printf("\nThe second polynomial is:\n");
     display(head2);
     printf("\n");
@@ -143,8 +144,8 @@ int main()
     struct node *head3 = add_polynomial(head1, head2);
     printf("\nThe sum of the two polynomials you entered is:\n");
     display(head3);
-    free(head1);
-    free(head2);
-    free(head3);
+    free_node(head1);
+    free_node(head2);
+    free_node(head3);
     return 0;
 }
