@@ -111,6 +111,16 @@ struct node* add_polynomial(struct node *poly1, struct node *poly2)
     return head3;
 }
 
+void free_node(struct node *polynomial)
+{
+    while(polynomial->next != NULL)
+    {
+        struct node *temp = polynomial;
+	polynomial = polynomial->next;
+	free(temp);
+    }
+}
+
 int main()
 {
     int degree1, degree2;
@@ -133,5 +143,8 @@ int main()
     struct node *head3 = add_polynomial(head1, head2);
     printf("\nThe sum of the two polynomials you entered is:\n");
     display(head3);
+    free(head1);
+    free(head2);
+    free(head3);
     return 0;
 }
