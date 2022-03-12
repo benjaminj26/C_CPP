@@ -32,5 +32,6 @@ int main()
     printf("The sorted array is:\n");
     for(int k=0;k<n;k=k+1)
         printf("%d\t",Ar[k]);
+    printf("\n");
     return 0;
 }
