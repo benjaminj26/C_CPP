@@ -37,5 +37,5 @@ udpserver: ${PROG3}
 udpclient: ${PROG4}
 	./${PROG4}
 
-clean: ${PROG}
-	rm ${PROG}
+clean: ${PROG1} ${PROG2} ${PROG3} ${PROG4} 
+	rm ${PROG1} ${PROG2} ${PROG3} ${PROG4}
